@@ -1,0 +1,170 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .bg-image {
+        background-image: url('static/assets/img/chem.png'); 
+        background-size: cover; 
+        background-position: center center; 
+        margin-top: 5%;
+    }
+    .btns{
+        border-radius: 0px;
+    }
+</style>
+
+<main class="main">
+ 
+    <section class="portfolio-block block-intro border-bottom bg-image">
+        <div class="container">
+            <div class="about-me">
+
+                <h3 class="animate__animated animate__fadeInUp">User Feedbacks</h3>
+            </div>
+        </div>
+    </section>
+
+     <div class="container mt-5">
+        <div class="row mb-5 justify-content-center">
+
+            <div class="col-md-6">
+                <div class="card mb-5 bg-white shadow">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                        <form id="feedback-form" method="post">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <input type="email" class="form-control p-2"  placeholder="Enter your email" name="email" required>
+
+                              </div>
+                              
+                              <div class="mb-3">
+                                <textarea name="feedback" placeholder="Enter your feedback here" class="form-control p-3"  required></textarea>
+
+                              </div>
+
+                              <div class="mb-3">
+                                <button type="submit" class="btn form-control btns btn-primary">Submit</button>
+
+                              </div>
+                          </form>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+     </div>
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+
+
+<script>
+    $(document).ready(function() {
+      $('#feedback-form').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        // Get the form data
+        var formData = $(this).serialize();
+    
+        // Send AJAX request
+        $.ajax({
+          url: '/feedbacks/', // URL to your Django view
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+            if (response.success) {
+              // Display success alert message
+              Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Feedback submitted successfully!',
+                timer: 3000, // Display for 3 seconds
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
+              // Reset form fields
+              $('#feedback-form')[0].reset();
+            } else {
+              // Display error alert message
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error submitting feedback: ' + response.error,
+                timer: 5000, // Display for 5 seconds
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
+            }
+          },
+          error: function(xhr, errmsg, err) {
+            // Display error alert message
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Error submitting feedback: ' + errmsg,
+              timer: 5000, // Display for 5 seconds
+              timerProgressBar: true,
+              showConfirmButton: false
+            });
+          }
+        });
+      });
+    });
+    </script>
+
+
+<!--toast message links-->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
+<!--toast message links-->
+
+
+
+
+<!--for toast message-->
+<!-- <script>
+    $(document).ready(function() {
+      $('#feedback-form').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        // Get the form data
+        var formData = $(this).serialize();
+    
+        // Send AJAX request
+        $.ajax({
+          url: '/feedbacks/', // URL to your Django view
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+            if (response.success) {
+              // Display success toast message with timeout of 5 seconds
+              toastr.success('Feedback submitted successfully!', 'Success', { timeOut: 5000 });
+              // Reset form fields
+              $('#feedback-form')[0].reset();
+            } else {
+              // Display error toast message with timeout of 5 seconds
+              toastr.error('Error submitting feedback: ' + response.error, 'Error', { timeOut: 5000 });
+            }
+          },
+          error: function(xhr, errmsg, err) {
+            // Display error toast message with timeout of 5 seconds
+            toastr.error('Error submitting feedback: ' + errmsg, 'Error', { timeOut: 5000 });
+          }
+        });
+      });
+    });
+    </script> -->
+<!--for toast message-->
+
+   
+{% endblock %}

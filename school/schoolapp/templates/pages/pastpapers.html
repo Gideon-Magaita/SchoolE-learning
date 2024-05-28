@@ -1,0 +1,55 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .bg-image {
+        background-image: url('static/assets/img/chem.png'); 
+        background-size: cover; 
+        background-position: center center; 
+        margin-top: 5%;
+    }
+</style>
+
+<main class="page cv-page">
+ 
+    <section class="portfolio-block block-intro border-bottom bg-image">
+        <div class="container">
+            <div class="about-me">
+
+                <h3 class="animate__animated animate__fadeInUp">Available Past Papers</h3>
+            </div>
+        </div>
+    </section>
+
+     <div class="container mt-2">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                      <h4 style="text-transform: uppercase;">Recently uploaded past papers</h4>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row mt-5">
+                {% for p in papers %}
+                <div class="col-md-3">
+                    
+                
+                <a href="{{ p.paper_file.url }}" class="btn btn-danger">Download here</a>
+                <p>
+                    {{ p.file_name }}
+                </p>
+               
+
+                </div>
+                {% endfor %}
+            </div>
+
+            
+        </div>
+     </div>
+</main>
+{% endblock %}

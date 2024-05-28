@@ -1,0 +1,109 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+{% load static %}
+    
+<main class="page lanidng-page">
+    <section class="portfolio-block block-intro">
+        <div class="container">
+            {% for message in messages %}
+           <p class="text text-white"> {{ message }} </P>
+            {% endfor %}
+            <div class="avatar" style="background-image:url({% static 'assets/img/avatars/logo.jpeg' %});"></div>
+            <div class="about-me">
+                <p class="animate__animated animate__fadeInUp">Hello! I am <strong>Peter</strong>
+                    I am a passionate and dedicated science subjects teacher who strives to inspire students and foster a love for scientific exploration. With a focus on interactive learning, I create engaging classroom environments where students can ask questions, think critically, and participate in hands-on experiments.
+                
+                
+                </p><a class="btn btn-outline-primary" role="button" href="#">Get Started</a>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-block photography">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{% url 'biology' %}"><img class="img-fluid image" src="static/assets/img/nature/biology.png"></a></div>
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{% url 'mathematics' %}"><img class="img-fluid image" src="static/assets/img/nature/math.png"></a></div>
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{% url 'physics' %}"><img class="img-fluid image" src="static/assets/img/nature/physics.png"></a></div>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-block call-to-action border-bottom">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center content">
+                <h3>Like what you see?</h3><button class="btn btn-outline-primary btn-lg" type="button">Get Started</button>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-block skills">
+        <div class="container">
+            <div class="heading">
+                <h2>Gain Skills In</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card special-skill-item border-0">
+                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Physics</h3>
+                            <p class="card-text">
+                                Physics is the branch of science that deals with the fundamental principles of the natural world, including the behavior of matter and energy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card special-skill-item border-0">
+                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Chemistry</h3>
+                            <p class="card-text">
+                                Chemistry is the branch of science that deals with the composition, properties, structure, and transformations of matter.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card special-skill-item border-0">
+                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Biology</h3>
+                            <p class="card-text">
+                                
+Biology is the scientific discipline that studies living organisms and their interactions with the environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<section class="portfolio-block website gradient">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-5 offset-lg-1 text">
+                <h3>Past Papers</h3>
+                <p style="text-align:justify;">
+                    These papers will also be released through my website according to the subjects that will be taught. They are also often released by educational boards, schools, or universities to provide students with a reference for the format, content, and difficulty level of upcoming exams.
+                </p>
+            </div>
+            <div class="col-md-12 col-lg-5">
+                <div class="portfolio-laptop-mockup">
+                    <div class="screen">
+                        <div class="screen-content" style="background-image:url(&quot;assets/img/tech/image6.png&quot;);"></div>
+                    </div>
+                    <div class="keyboard"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock %}

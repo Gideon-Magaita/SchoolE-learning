@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Intellectual Teacher</title>
+    <!--animateCSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!--animateCSS-->
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/pikaday.min.css' %}">
+
+    <style>
+        .dropdown-submenu:hover .dropdown-menu {
+            display: block;
+          }
+          p{
+            font-size:18px;
+          }
+         
+    </style>
+</head>
+
+<body>
+
+    <!--header-->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-opacity-25 portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="{% url 'home' %}"> <b>INTELLECTUAL</b> TEACHER</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="subjectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Subjects</a>
+                        <ul class="dropdown-menu" aria-labelledby="subjectsDropdown">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="chemistryDropdown">Chemistry</a>
+                                <ul class="dropdown-menu  bg-primary" aria-labelledby="chemistryDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'chemistry' %}">O-Level</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'alevel_chemistry' %}">A-Level</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="physicsDropdown">Physics</a>
+                                <ul class="dropdown-menu  bg-primary" aria-labelledby="physicsDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'physics' %}">O-Level</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'alevel_physics' %}">A-Level</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="biologyDropdown">Biology</a>
+                                <ul class="dropdown-menu  bg-primary" aria-labelledby="biologyDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'biology' %}">O-Level</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'alevel_biology' %}">A-Level</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="mathematicsDropdown">Mathematics</a>
+                                <ul class="dropdown-menu  bg-primary" aria-labelledby="mathematicsDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'mathematics' %}">O-Level</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'alevel_mathematics' %}">A-Level</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="paperDropdown">Past Paper</a>
+                                <ul class="dropdown-menu  bg-primary" aria-labelledby="paperDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'papers' %}">O-Level</a></li>
+                                    <li><a class="dropdown-item" href="#">A-Level</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'feed' %}">Feedbacks</a></li>
+
+                    <li class="nav-item"><a class="btn btn-primary" href="{% url 'login_user' %}">Sign In</a></li>
+
+                    <li class="nav-item"><a class="btn btn-primary" href="{% url 'register' %}">Sign Up</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <!--header-->
+    
+    {% block content %}
+
+
+
+
+    {% endblock %}
+
+    <footer class="page-footer py-3 border-top mt-5">
+        <div class="container my-4">
+            <div class="links"><a href="#">About me</a><a href="#">Contact me</a><a href="#">Subjects</a></div>
+            <div class="social-icons"><a class="me-3" href="#"><i class="icon ion-social-facebook"></i></a><a class="me-3" href="#"><i class="icon ion-social-instagram-outline"></i></a><a class="me-3" href="#"><i class="icon ion-social-twitter"></i></a></div>
+        </div>
+    </footer>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/pikaday.min.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+
+    
+    
+</body>
+
+</html>

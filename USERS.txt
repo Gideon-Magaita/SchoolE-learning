@@ -1,0 +1,6 @@
+admin1: magaita1998
+navigate to admin panel using this path("/login_admin")
+
+django-admin-panel: 
+username:admin 
+pswd:admin123

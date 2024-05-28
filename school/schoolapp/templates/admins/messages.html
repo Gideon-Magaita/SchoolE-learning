@@ -1,0 +1,37 @@
+{% for message in messages %}
+  {% if message.tags == 'success' %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      var m = "{{ message }}";
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: m,
+        confirmButtonColor: '#1d6472',
+        background: '#ffffff',
+        allowEscapeKey: false,
+        showClass: {
+          popup: 'animate__animated animate__zoomIn'  // Add animation to the popup
+        },
+      });
+    </script>
+  {% else %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      var m = "{{ message }}";
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: m,
+        confirmButtonColor: '#1d6472',
+        background: '#ffffff',
+        allowEscapeKey: false,
+        showClass: {
+          popup: 'animate__animated animate__zoomIn'  // Add animation to the popup
+        },
+      });
+    </script>
+  {% endif %}
+{% endfor %}

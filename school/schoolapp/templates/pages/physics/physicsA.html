@@ -1,0 +1,129 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .bg-image {
+        background-image: url('{% static "assets/img/chem.png" %}'); 
+        background-size: cover; 
+        background-position: center center; 
+        margin-top: 5%;
+    }
+</style>
+
+<main class="page cv-page">
+ 
+    <section class="portfolio-block block-intro border-bottom bg-image">
+        <div class="container">
+            <div class="about-me">
+
+                <h3 class="animate__animated animate__fadeInUp">A-Level Physics Contents</h3>
+            </div>
+        </div>
+    </section>
+
+     <div class="container mt-2">
+        
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="card mt-2">
+                    <div class="card-header">
+                      <h3>Related Physics Contents</h3>
+                    </div>
+                </div>
+
+                 <!-- Pagination Links -->
+                 {% if page_obj.has_other_pages %}
+                 <ul class="pagination mt-3">
+                     {% if page_obj.has_previous %}
+                         <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                     {% else %}
+                         <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                     {% endif %}
+
+                     {% for i in page_obj.paginator.page_range %}
+                         {% if page_obj.number == i %}
+                             <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only"></span></span></li>
+                         {% else %}
+                             <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                         {% endif %}
+                     {% endfor %}
+
+                     {% if page_obj.has_next %}
+                         <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                     {% else %}
+                         <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                     {% endif %}
+                 </ul>
+             {% endif %}
+               <!-- Pagination Links -->
+
+                {% for phys in page_obj %}
+                <h4 class="text mt-2">{{ phys.title }}</h4>
+               <p style="text-align: justify;">
+                {{ phys.description|truncatewords:50 }}
+               </p>
+               <a href="{% url 'view_physics_alevel' phys.id %}" class="btn btn-primary">Read More</a>
+               {% endfor %}
+                   
+               <br>
+               <br>
+
+                  <!-- Pagination Links -->
+                    {% if page_obj.has_other_pages %}
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                        {% endif %}
+
+                        {% for i in page_obj.paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only"></span></span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-8">
+                {% if physic %} 
+                <h2>{{ physic.title }}</h2>
+                <br>
+                 {% if physic.image %}
+                <img src="{{ physic.image.url }}" height="533" width="800" alt="image" class="img img-fluid">
+                {% else %}
+                 <p>Recent content</p>
+                 {% endif %}
+                <p style="text-align: justify;">
+                {{ physic.description }}
+                </p>
+                <br>
+                {% if physic.pdf_file %}
+                 <a href="{{ physic.pdf_file.url }}" class="btn btn-primary">Download pdf file</a>
+                 {% else %}
+                 <p class="text text-danger">No pdf file for this content</p>
+                 {% endif %}
+                <br>
+                <br>
+                <p>Publisher -  <i>{{ physic.publisher }}</i> </p>
+                <br>
+                <br>
+                <p>Published at - <i>{{ physic.time|date:'Y-m-d'}}</i> </p>
+                {% endif %}
+
+            </div>
+        </div>
+     </div>
+</main>
+{% endblock %}

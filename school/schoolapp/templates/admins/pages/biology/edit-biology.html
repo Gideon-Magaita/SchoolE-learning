@@ -1,0 +1,51 @@
+{% extends 'admins/pages/base.html '%}
+{% block content %}
+{% load static %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h2 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-book"></i>
+                </span> Edit Biology Contents
+              </h2>
+              
+            </div>
+
+            <!--changes should be made within this block-->
+            <div class="row">
+              <div class="col-md-12">
+                
+                {% include 'admins/messages.html' %}
+             
+               
+         
+            <div class="card">
+              <div class="card-header">
+              <h3>Biology Contents
+              </div>
+
+              <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <!-- {{ form.media }} -->
+                    {{ form.as_p }}
+                
+                
+                
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+            <!--changes should end here-->
+    
+          </div>
+          </div>
+
+
+{% endblock %}

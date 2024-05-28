@@ -1,0 +1,64 @@
+{% extends 'admins/pages/base.html '%}
+{% block content %}
+{% load static %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h2 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-book"></i>
+                </span> Mathematics Contents
+              </h2>
+              
+            </div>
+
+            <!--changes should be made within this block-->
+            <div class="row">
+              <div class="col-md-12">
+                        
+         
+            <div class="card">
+              <div class="card-header">
+              <h3>Mathematics Contents
+              </div>
+
+              <div class="card-body">
+                {% if my_mathematics %} 
+                <h2>{{ my_mathematics.title }}</h2>
+                <br>
+                 {% if my_mathematics.image %}
+                <img src="{{ my_mathematics.image.url }}" height="533" width="800" alt="image" class="img img-fluid">
+                {% else %}
+                 <p>Recent content</p>
+                 {% endif %}
+                 <br/>
+                 <br/>
+                <p style="text-align: justify; line-height:1.7;" class="paragraph">
+                {{ my_mathematics.description }}
+                </p>
+                <br>
+                {% if my_mathematics.pdf_file %}
+                 <a href="{{ my_mathematics.pdf_file.url }}" class="btn btn-primary">Download pdf file</a>
+                 {% else %}
+                 <p class="text text-danger">No pdf file for this content</p>
+                 {% endif %}
+                <br>
+                <br>
+                <p>Publisher -  <i>{{ my_mathematics.publisher }}</i> </p>
+                <br>
+                <br>
+                <p>Published at - <i>{{ my_mathematics.time|date:'Y-m-d'}}</i> </p>
+                {% endif %}
+
+                
+              </div>
+            </div>
+          </div>
+            <!--changes should end here-->
+    
+          </div>
+          </div>
+
+
+{% endblock %}
